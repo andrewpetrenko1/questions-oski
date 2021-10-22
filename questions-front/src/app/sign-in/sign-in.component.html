@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center align-items-center full-height bg-auth">
+  <div class="card col-3">
+    <div class="card-body">
+      <h3 class="mb-3">Sign-in</h3>
+      <form [formGroup]="signInForm" (submit)="signInSubmit()">
+        <div class="form-group">
+          <label for="login" class="form-label">Login</label>
+          <input type="text" class="form-control" id="login"
+          formControlName="login" [class.is-invalid]="isValid('login')" >
+          <small class="form-text text-danger" *ngIf="signInForm.get('login')!.hasError('required') && signInForm.get('login')!.touched">
+            Login is required
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password"
+          formControlName="password" [class.is-invalid]="isValid('password')" >
+          <small class="form-text text-danger" *ngIf="signInForm.get('password')!.hasError('required') && signInForm.get('password')!.touched">
+            Password is required
+          </small>
+        </div>
+        <ngb-alert type="danger" *ngIf="isInvalidCredentials" [dismissible]="false">Invalid credentials</ngb-alert>
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Login</button>
+          <button type="button" class="btn btn-link" [routerLink]="['/', 'auth', 'sign-up']">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

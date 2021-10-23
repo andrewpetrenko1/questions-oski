@@ -67,7 +67,9 @@ namespace questions_api
         });
 
       services.AddTransient<IUserRepository, UserRepository>();
+      services.AddTransient<IQuestionRepository, QuestionRepository>();
       services.AddTransient<IUserDomain, UserDomain>();
+      services.AddTransient<IQuestionDomain, QuestionDomain>();
 
       var mapConfig = new MapperConfiguration(mc => mc.AddProfile(new MapperPr()));
       services.AddSingleton(mapConfig.CreateMapper());

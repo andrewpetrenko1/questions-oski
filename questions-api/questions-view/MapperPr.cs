@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using questions_data.Entities;
 using questions_view.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace questions_view
 {
@@ -12,6 +9,8 @@ namespace questions_view
     public MapperPr()
     {
       CreateMap<User, UserView>().ReverseMap();
+      CreateMap<QuestionView, Question>().ReverseMap();
+      CreateMap<AnswerView, Answer>().ReverseMap();
     }
   }
 }

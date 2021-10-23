@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestAnswerComponent } from './test-answer/test-answer.component';
 
 function getToken(): string {
   return localStorage.getItem(TOKEN_KEY)!;
@@ -29,7 +31,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     AppComponent,
     SignUpComponent,
     TestListComponent,
-    SignInComponent
+    SignInComponent,
+    TestAnswerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     HttpClientModule,
     JwtModule.forRoot(JWT_Module_Options),
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

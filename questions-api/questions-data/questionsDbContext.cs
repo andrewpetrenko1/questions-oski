@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using questions_data.Entities;
+using System.Threading.Tasks;
 
 namespace questions_data
 {
@@ -29,8 +27,33 @@ namespace questions_data
       userModel
         .Property(u => u.Salt)
         .IsRequired();
+
+      var incQuestModel = modelBuilder.Entity<Answer>();
+
+      incQuestModel
+        .Property(q => q.TextAnswer)
+        .IsRequired();
+
+      incQuestModel
+        .HasOne(iq => iq.Question)
+        .WithMany(q => q.Answers)
+        .HasForeignKey(q => q.QuestionId);
+
+      var questionModel = modelBuilder.Entity<Question>();
+
+      questionModel
+        .Property(q => q.QuestionText)
+        .IsRequired();
+
+      questionModel
+        .Property(q => q.CorrectAnswerId)
+        .IsRequired();
+
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Answer> Answers { get; set; }
+    public Task<int> SaveChangesAsync() => base.SaveChangesAsync();
   }
 }

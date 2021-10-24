@@ -1,4 +1,4 @@
-<div class="container full-height d-flex justify-content-center align-items-center">
+<div class="container full-height d-flex justify-content-center align-items-center" *ngIf="questions">
   <div class="card p-3 w-50" *ngIf='!showResults'>
     <p class="lead" [innerHTML]="questions[questionNumber].questionText"></p>
     <div class="card-body">

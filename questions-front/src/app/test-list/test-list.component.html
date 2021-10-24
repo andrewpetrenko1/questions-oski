@@ -2,7 +2,10 @@
   <ul class="list-group">
     <li class="list-group-item list-group-item-action" *ngFor="let questions of listOfQuestions; let i = index">
       <div class="d-flex justify-content-between align-items-center">
-        <span>Test #{{i + 1}}</span> 
+        <div class="d-flex justify-content-between w-20">
+          <span class="mr-3">Test #{{i + 1}}</span>
+          <span>{{getQuestionResult(i)}}</span>
+        </div>
         <button class="btn btn-primary" (click)="startTest(i, confirmModal)">Start</button>
       </div>
     </li>

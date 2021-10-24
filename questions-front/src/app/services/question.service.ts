@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { DisplayRes } from '../interfaces/displayRes';
 import { Question } from '../interfaces/question';
 
 @Injectable({
@@ -13,8 +14,10 @@ export class QuestionService {
   public questionsListSize = 3;
   public questionCount = 5;
 
-  public quetionsToAnswer: Question[] = [];
+  public quetionsToAnswerId: number = -1;
   private listOfQuestions = new ReplaySubject<[Question[]]>();
+
+  questionsResults: DisplayRes[] = [];
 
   constructor(
     private httpClient: HttpClient,
